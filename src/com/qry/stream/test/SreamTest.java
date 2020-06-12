@@ -27,12 +27,27 @@ public class SreamTest {
                 new User(7, "小舞", 9),
                 new User(13, "张三", 26)
         );
-        order(users);
+//        groupBy(users);
+        stord(users);
     }
-
-    public static void order(List<User> list){
+    /**
+     * @Description: 分组
+     * @Param
+     * @return
+     */
+    public static void groupBy(List<User> list){
         Map<Integer, List<User>> collect = list.stream().collect(Collectors.groupingBy(item->item.getAge()));
         List<User> users = collect.get(18);
         users.forEach(System.out::println);
     }
+    /**
+     * @Description: 排序
+     * @Param
+     * @return
+     */
+    public static void stord(List<User> list){
+        List<User> collect = list.stream().sorted((a,b)->a.getAge().compareTo(b.getAge())).collect(Collectors.toList());
+        collect.forEach(System.out::println);
+    }
+
 }
