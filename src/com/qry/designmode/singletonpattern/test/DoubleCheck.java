@@ -3,6 +3,8 @@ package com.qry.designmode.singletonpattern.test;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @ClassName DoubleCheck
@@ -44,5 +46,16 @@ public class DoubleCheck {
         LHan instance1 = LHan.getInstance();
 
         System.out.println(instance.equals(instance1));
+        System.out.println("present");
+
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6);
+        Iterator<Integer> iterator = list.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+        List<Integer> integers = Collections.synchronizedList(list);
+        for (Integer integer : integers) {
+            System.out.println(integer);
+        }
     }
 }
